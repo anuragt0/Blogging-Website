@@ -21,7 +21,7 @@ router.post("/login",  async(req,res)=>{
     // console.log(data);
     try {
         const user = await User.findOne({email: data.email});
-        console.log(user);
+        // console.log(user);
         if(!user){
             return res.status(401).json({message:"Email does not exists"})
         }
@@ -33,13 +33,15 @@ router.post("/login",  async(req,res)=>{
         }
         //password is correct
         //generate token
+
         const tokenData = {
-            id: user.id,
+            id: user._id,
             exp: Math.floor(Date.now() / 1000) + 60*60*24
         }
+        // console.log(tokenData);
 
         const token = jwt.sign(tokenData, process.env.JWT_SECRET);
-        console.log(token);
+        // console.log(token);
 
 
         res.status(200).json({success: true, message: "Logged in successfully", token});

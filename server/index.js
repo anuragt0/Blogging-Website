@@ -1,5 +1,7 @@
 const express = require("express")
 const dotenv = require('dotenv');
+const userRoutes = require('./src/api/user/routes.js');
+
 dotenv.config();
 
 const app = express()
@@ -10,7 +12,8 @@ connectToMongoDB()
 app.use(express.json())
 
 
-app.use("/api/user", require("./src/api/user/routes.js"));
+
+app.use("/api/user", userRoutes);
 app.use("/api/blog", require("./src/api/blog/routes.js"));
 
 
