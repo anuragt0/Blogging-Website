@@ -10,9 +10,9 @@ router.post("/register", async(req,res)=>{
     const new_user = req.body;
     try {
         await User.create(new_user);
-        res.status(200).json({message: "Usuário criado com sucesso!"})
+        res.status(200).json({message: "User is registered successfully", success: true})
     } catch (error) {
-        res.status(501).json({message: "Internal server error!"})
+        res.status(501).json({message: "Internal server error!", success: false})
     }
 })
 
