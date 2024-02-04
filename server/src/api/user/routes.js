@@ -1,9 +1,10 @@
 const router = require('express').Router();
+const jwt = require("jsonwebtoken")
 
 const User = require("../../database/Model/User")
 const Blog = require("../../database/Model/Blog")
 
-const jwt = require("jsonwebtoken")
+const authentication = require("../../middlewares/authentication")
 
 
 router.post("/register", async(req,res)=>{
@@ -51,6 +52,19 @@ router.post("/login",  async(req,res)=>{
     }
 })
 
+router.get("/profile", authentication, async (req,res)=>{
+    const userId = req.mongoId;
+    try {
+        const userDoc = await User.findById(userId).select('-password -_id ');
+        const blogIds = userDoc.blog_ids;
+        const blogs = await Blog.find({ _id: { $in: blogIds } }).exec();
+        const newUserDoc = {name: userDoc.name, email: userDoc.email};
+        res.status(200).json({success: true, userDoc: newUserDoc, blogs});
+    } catch (error) {
+        res.status(501).json({message: "Internal server error!"})
+    }
+
+})
 
 
 

@@ -11,6 +11,13 @@ const BlogSchema = mongoose.Schema({
     },
     user_id: {
         type: mongoose.Types.ObjectId
+    },
+    createdBy: {
+        type: String
+    },
+    time: {
+        type: Date,
+        default: Date.now(),
     }
 
 })

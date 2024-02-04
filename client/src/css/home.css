@@ -1,0 +1,41 @@
+/* styles.css */
+
+.blog-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .blog-item {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+  
+  .blog-item h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+  
+  .blog-item p {
+    color: #555;
+  }
+  
+  .blog-meta {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #888;
+  }
+  
+  .username {
+    font-weight: bold;
+  }
+  
+  .time {
+    margin-left: 10px;
+  }
+  

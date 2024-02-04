@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const authenticate = require("../../middlewares/authentication");
 const Blog = require("../../database/Model/Blog")
-const User = require("../../database/Model/User")
+const User = require("../../database/Model/User");
 
 router.get("/all", authenticate, async (req,res)=>{
     try {
@@ -15,7 +15,12 @@ router.get("/all", authenticate, async (req,res)=>{
 router.post("/create", authenticate, async (req, res)=>{
     const userId = req.mongoId;
     const blog = req.body;
+
+    const userDoc = await User.findById(userId).select('name').exec();
+
     blog.user_id = userId;
+    blog.createdBy = userDoc.name
+
     
     try {
         // Step 1: Create Blog and take blog ID

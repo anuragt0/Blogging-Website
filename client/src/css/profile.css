@@ -1,0 +1,48 @@
+/* Profile.css */
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .profile-details {
+    margin-bottom: 20px;
+  }
+  
+  .blog-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .blog-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .blog-card h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+  
+  .blog-options {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .blog-options button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .blog-options button:hover {
+    background-color: #d32f2f;
+  }
+  
